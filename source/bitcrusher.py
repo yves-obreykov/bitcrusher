@@ -18,16 +18,16 @@ parser = argparse.ArgumentParser(
         epilog='Send file, down sample fraction and desired bitrate to get a bitcrushed version of the audio')
 
 parser.add_argument('filename', help='input file, stereo .wav file')
-parser.add_argument('-s', default=4,help='-s down sample fraction', type=int)
-parser.add_argument('-b', default=8, help='-b desired bit depth', type=int)
-parser.add_argument('-o', default='crushed_audio.wav', help='-o optional output file name')
+parser.add_argument('-ds', '--downsample', default=4,help='-s down sample fraction', type=int)
+parser.add_argument('-bd', '--bitdepth',  default=8, help='-b desired bit depth', type=int)
+parser.add_argument('-o', '--output', default='crushed_audio.wav', help='-o optional output file name')
 
 # get arguments
 args = parser.parse_args()
 data, sr = sf.read(args.filename)
-downsample = args.s
-bitdepth = args.b
-output_file = args.o
+downsample = args.downsample
+bitdepth = args.bitdepth
+output_file = args.output
 
 # do signal processing
 crushed_data = reduce_sample_rate(data, downsample)
