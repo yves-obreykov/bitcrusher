@@ -15,12 +15,15 @@ def reduce_bit_depth(audio, bitdepth=8):
 parser = argparse.ArgumentParser(
         prog='BitCrusherYves',
         description='Simple bitcrusher',
-        epilog='Send file, down sample fraction and desired bitrate to get a bitcrushed version of the audio')
+        epilog='Input stereo .wav file, down sample by a factor and select desired bit depth to get a bitcrushed version of the audiofile')
 
-parser.add_argument('filename', help='input file, stereo .wav file')
-parser.add_argument('-ds', '--downsample', default=4,help='-s down sample fraction', type=int)
-parser.add_argument('-bd', '--bitdepth',  default=8, help='-b desired bit depth', type=int)
-parser.add_argument('-o', '--output', default='crushed_audio.wav', help='-o optional output file name')
+parser.add_argument('filename', help='Input stereo .wav file')
+parser.add_argument('-s', '--downsample', default=4, type=int,
+                    help='Downsample factor (default: 4), Determines how much the sample rate is reduced ')
+parser.add_argument('-b', '--bitdepth',  default=8, type=int,
+                    help='Target bit depth (default: 8). Controls quantization precision.')
+parser.add_argument('-o', '--output', default='crushed_audio.wav', type=str,
+                    help='Output filename (default: crushed_audio.wav). Must end with .wav')
 
 # get arguments
 args = parser.parse_args()

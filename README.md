@@ -53,5 +53,5 @@ This command reads `piano.wav`, reduces the sample rate by a factor of 24, quant
 ## Notes
 
 - Input must be a stereo `.wav` file.
-- Output is written to the same directory unless otherwise specified.
+- Output is written to the same directory.
 - The bitcrusher preserves aliasing artifacts to emulate classic digital lo-fi sound.
